@@ -9,6 +9,25 @@
         <title>Pseudo-Classes testing</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            input:valid + .invalid {
+                visibility: hidden;
+            }            
+            input:invalid + .invalid {
+                visibility: visible;
+            }
+            input:required {
+                border: 2px solid #900
+            }
+            .invalid {
+                color: #666;
+                font-style: italic;
+            }
+            input:valid {
+                border: 2px solid #ccc;
+            }
+        </style>
+        <script type="text/javascript"" src="alert.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -18,7 +37,13 @@
             
             <input type="email" name="email" id="email" value="" required>
             <div class="invalid">
-                The required email....
+                This must be a valid email address.
+            </div>
+            
+            <input type="text" name="username" value="" 
+                pattern="[a-zA-Z ]{5,}" maxlength="30" required>
+            <div class="invalid">
+                This must be an alphanumeric value, 5 to 30 characters long.
             </div>
             
             <button type="submit" id="submit" name="submit" class="btn">Change</button>
